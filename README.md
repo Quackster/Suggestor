@@ -29,6 +29,8 @@ Customisable, you can load the wordlist yourself or you can give it a word list 
     // [".:alexRich:.", ".:alexSnoopy:.", ".:alexThrifty:."]
 ```
 
+You can access the default settings with ``SuggestorService.DefaultSettings``.
+
 In addition, you can add a callback to return true / false if this entry already exists in your own data source so it will keep retrying.
 
 ```c
@@ -36,7 +38,15 @@ In addition, you can add a callback to return true / false if this entry already
 
     // or...
 
-    SuggestorService.GetSuggestions(".:alex:.", IsUsernameTaken)
+    SuggestorService.GetSuggestions(".:alex:.", new SuggestorSettings
+    {
+        Format = "{}{original}",
+        MaximumWordLength = 12,
+        SuggestionCount = 3,
+        MaximumAttempts = 10,
+        WordList = null,
+        WordListFile = null
+    }, IsUsernameTaken);
 ```
 
 Example callback method.
