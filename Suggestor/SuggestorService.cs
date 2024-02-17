@@ -11,12 +11,14 @@ namespace Suggestor
     {
         private static Random _random = new Random();
 
-        public static List<string> GetSuggestions(string input)
+        public static SuggestorSettings DefaultSettings => GetDefaultSettings();
+
+        public static List<string> GetSuggestions(string input, Func<string, bool> existsCallback = null)
         {
-            return GetSuggestions(input, GetDefaultSettings());
+            return GetSuggestions(input, DefaultSettings, existsCallback);
         }
 
-        public static List<string> GetSuggestions(string input, SuggestorSettings selectorSettings)
+        public static List<string> GetSuggestions(string input, SuggestorSettings selectorSettings, Func<string, bool> existsCallback = null)
         {
             var suggestions = new List<string>();
 
@@ -43,6 +45,7 @@ namespace Suggestor
 
                 // Check if the suggestion already exists
                 if (suggestions.Contains(newSuggestion) ||
+                    (existsCallback != null && existsCallback(newSuggestion)) ||
                     (selectorSettings.MaximumWordLength != null && newSuggestion.Length > selectorSettings.MaximumWordLength))
                 {
                     attempts++; // Increment the attempts counter
@@ -77,7 +80,7 @@ namespace Suggestor
             return formatText;
         }
 
-        public static SuggestorSettings GetDefaultSettings()
+        private static SuggestorSettings GetDefaultSettings()
         {
             var selectorSettings = new SuggestorSettings
             {

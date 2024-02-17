@@ -16,12 +16,17 @@ namespace SuggestorTest
                 MaximumAttempts = 10,
                 WordListFile = null,
                 WordList = null
-            });
+            }, IsUsernameTaken);
 
             // [".:alexVigorous:.", ".:alexSnoopy:.", ".:alexThrifty:."]
 
 
             Console.WriteLine("Hello, World!");
+        }
+
+        private static bool IsUsernameTaken(string input)
+        {
+            return true;
         }
     }
 }

@@ -28,3 +28,22 @@ Customisable, you can load the wordlist yourself or you can give it a word list 
 
     // [".:alexRich:.", ".:alexSnoopy:.", ".:alexThrifty:."]
 ```
+
+In addition, you can add a callback to return true / false if this entry already exists in your own data source so it will keep retrying.
+
+```c
+    SuggestorService.GetSuggestions(".:alex:.", IsUsernameTaken)
+
+    // or...
+
+    SuggestorService.GetSuggestions(".:alex:.", IsUsernameTaken)
+```
+
+Example callback method.
+
+```c
+    private static bool IsUsernameTaken(string input)
+    {
+        return _db.Users.Any(x => x.Username == input);
+    }
+```
