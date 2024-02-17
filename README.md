@@ -57,3 +57,13 @@ Example callback method.
         return _db.Users.Any(x => x.Username == input);
     }
 ```
+
+### Available on NuGet
+
+NuGet link: https://www.nuget.org/packages/Suggestor/1.0.0
+
+Package: 
+
+```
+NuGet\Install-Package Suggestor -Version 1.0.0
+```
