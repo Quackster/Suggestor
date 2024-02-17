@@ -58,7 +58,7 @@ Example callback method.
     }
 ```
 
-### Available on NuGet
+## Available on NuGet
 
 NuGet link: https://www.nuget.org/packages/Suggestor/1.0.0
 
