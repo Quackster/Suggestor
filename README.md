@@ -18,7 +18,7 @@ Customisable, you can load the wordlist yourself or you can give it a word list 
 ```c
     List<string> suggestionList = SuggestorService.GetSuggestions(".:alex:.", new SuggestorSettings
     {
-        Format = "{}{original}",
+        Format = "{original}{}",
         MaximumWordLength = 12,
         SuggestionCount = 3,
         MaximumAttempts = 10,
@@ -40,7 +40,7 @@ In addition, you can add a callback to return true / false if this entry already
 
     SuggestorService.GetSuggestions(".:alex:.", new SuggestorSettings
     {
-        Format = "{}{original}",
+        Format = "{original}{}",
         MaximumWordLength = 12,
         SuggestionCount = 3,
         MaximumAttempts = 10,
