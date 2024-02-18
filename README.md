@@ -49,13 +49,22 @@ In addition, you can add a callback to return true / false if this entry already
     }, IsUsernameTaken);
 ```
 
-Example callback method.
+Example callback method:
 
 ```c
     private static bool IsUsernameTaken(string input)
     {
         return _db.Users.Any(x => x.Username == input);
     }
+```
+
+Another valid way to use such callback method with valid syntax:
+
+```c
+  SuggestorService.GetSuggestions(input, suggestorSettings, existsCallback: (checkName) =>
+  {
+      return this.NameTaken(checkName);
+  });
 ```
 
 ## Available on NuGet
